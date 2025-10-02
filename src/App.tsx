@@ -1,12 +1,13 @@
 import {  } from 'react'
 
 import Home from './components/homepage/Home'
+import "./App.css"
 
 function App() {
   return (
-    <>
-    <Home />
-    </>
+    <div style={{margin:0, padding:0}}>
+      <Home />
+    </div>
   )
 }
 
