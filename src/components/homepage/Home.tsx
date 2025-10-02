@@ -35,6 +35,30 @@ function Home() {
           alt="Clothing Store"
         />
       </section>
+
+      <section className="recommend-section">
+  <h2 className="recommend-title">You might like...</h2>
+  <p className="text-gray-600 mb-4">Women’s Fashion</p>
+
+  <div className="product-scroll">
+    <div className="product-card">
+      <img src="https://example.com/shirt1.jpg" alt="Shirt 1" />
+      <p className="mt-2">Green Shirt</p>
+    </div>
+    <div className="product-card">
+      <img src="https://example.com/shirt2.jpg" alt="Shirt 2" />
+      <p className="mt-2">Pattern Shirt</p>
+    </div>
+    <div className="product-card">
+      <img src="https://example.com/shirt3.jpg" alt="Shirt 3" />
+      <p className="mt-2">Blue Shirt</p>
+    </div>
+    <div className="product-card">
+      <img src="https://example.com/shirt4.jpg" alt="Shirt 4" />
+      <p className="mt-2">Beige Shirt</p>
+    </div>
+  </div>
+</section>
     </Layout>
   );
 }
