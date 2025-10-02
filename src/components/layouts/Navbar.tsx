@@ -7,7 +7,7 @@ function Navbar() {
     <>
     <div className="header-main">
         <div className="header-left">
-            <img src={Logo} />
+            <img className='navbar-favicon' src={Logo} />
             <button>Home</button>
             <button>Shop</button>
             <button>Collections</button>
