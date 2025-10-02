@@ -1,12 +1,13 @@
 import React from 'react'
 import '../../components/styles/utilities/Navbar.css'
+import Logo from "../images/henreizh_favicon.png"
 
 function Navbar() {
   return (
     <>
     <div className="header-main">
         <div className="header-left">
-            <img src="" />
+            <img src={Logo} />
             <button>Home</button>
             <button>Shop</button>
             <button>Collections</button>
