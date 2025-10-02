@@ -1,0 +1,103 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background-color: white;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #166534; /* Tailwind's green-700 */
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero h1 span {
+  font-family: serif;
+}
+
+.hero h1 .est {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #6b7280; /* Tailwind's gray-500 */
+  margin-left: 0.5rem;
+}
+
+.hero p {
+  margin-top: 1.5rem;
+  font-size: 2.0rem;
+  font-weight: 300;
+  color: #1f2937; /* gray-800 */
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.hero-buttons button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 200px;
+  border: 1px solid black;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 35px;
+  margin: 0;
+
+}
+
+.hero-buttons .explore {
+  background: white;
+}
+
+.hero-buttons .explore:hover {
+  background: black;
+  color: white;
+}
+
+.hero-buttons .shop {
+  background: #16a34a; /* green-600 */
+  color: white;
+  border: none;
+}
+
+.hero-buttons .shop:hover {
+  background: #15803d; /* green-700 */
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.hero-image img {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 80rem;
+  width: 100%;
+}
+
+.hero-logo {
+  height: 1000px;   /* adjust as needed */
+  width: auto;    /* keep aspect ratio */
+  margin-bottom: -400px;
+  margin-top: -400px;
+}
+
+.wys-row{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 700px;
+    margin-top: 70px;
+}
