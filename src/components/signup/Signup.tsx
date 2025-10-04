@@ -1,8 +1,10 @@
+import Layout from "../layouts/Layout";
+
 function Signup() {
   return (
-    <div>
+    <Layout>
       <h1>Signup Page</h1>
-    </div>
+    </Layout>
   );
 }
 

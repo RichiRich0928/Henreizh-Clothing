@@ -1,8 +1,10 @@
+import Layout from "../layouts/Layout";
+
 function Cart() {
   return (
-    <div>
+    <Layout>
       <h1>Cart Page</h1>
-    </div>
+    </Layout>
   );
 }
 

@@ -1,8 +1,10 @@
+import Layout from "../layouts/Layout";
+
 function Collections() {
   return (
-    <div>
+    <Layout>
       <h1>Collections Page</h1>
-    </div>
+    </Layout>
   );
 }
 

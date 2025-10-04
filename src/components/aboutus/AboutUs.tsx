@@ -1,8 +1,10 @@
+import Layout from "../layouts/Layout";
+
 function AboutUs() {
   return (
-    <div>
+    <Layout>
       <h1>About Us Page</h1>
-    </div>
+    </Layout>
   );
 }
 

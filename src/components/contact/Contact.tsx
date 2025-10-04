@@ -1,8 +1,10 @@
+import Layout from "../layouts/Layout";
+
 function Contact() {
   return (
-    <div>
+    <Layout>
       <h1>Contact Page</h1>
-    </div>
+    </Layout>
   );
 }
 
