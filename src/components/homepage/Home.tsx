@@ -2,42 +2,42 @@ import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logoimg.png";
 import "../styles/Home.css";
 import Layout from "../layouts/Layout";
-
+import homepic from "../images/homepic.png";
 function Home() {
   const navigate = useNavigate();
 
   return (
     <>
       <Layout>
-        <h1>
-          <img src={logo} alt="Henreizh Logo" className="hero-logo" />
-        </h1>
-
+        <div className="home-logo-container">
+          <img src={logo} alt="Henreizh Logo" className="intro-logo" />
+        </div>
         <div className="wys-row">
-          <div className="hero-buttons">
+          <div className="intro-buttons">
             <button
-              className="explore"
+              className="explore-btn"
               onClick={() => navigate("/collections")}
             >
               Explore Our Collections
             </button>
           </div>
-          <p>
+          <p className="tagline">
             Wear.
             <br />
             Your.
             <br />
             Story.
           </p>
-          <div className="hero-buttons">
-            <button className="shop" onClick={() => navigate("/shop")}>
+          <div className="intro-buttons">
+            <button className="shop-btn" onClick={() => navigate("/shop")}>
               Start Shopping Now
             </button>
           </div>
         </div>
 
         <img
-          src="https://res.cloudinary.com/fortyfournorth/image/upload/v1695760481/The%20Look%20Company%20%28Staging%29/oaec1ysnrwxrurvznjpn.jpg"
+          style={{ objectFit: "cover", height: "1080px", width: "90%" }}
+          src={homepic}
           alt="Fashion clothing store display"
         />
 

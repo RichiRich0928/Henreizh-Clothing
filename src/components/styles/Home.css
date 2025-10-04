@@ -1,75 +1,48 @@
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 3rem 1.5rem;
-  background-color: white;
-}
 
-.hero h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #166534; /* Tailwind's green-700 */
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+/* Home.css */
 
-.hero h1 span {
-  font-family: serif;
-}
-
-.hero h1 .est {
-  font-size: 0.9rem;
-  font-weight: 300;
-  color: #6b7280; /* Tailwind's gray-500 */
-  margin-left: 0.5rem;
-}
-
-.hero p {
+.tagline {
   margin-top: 1.5rem;
-  font-size: 2.0rem;
+  font-size: 45px;
   font-weight: 300;
   color: #1f2937; /* gray-800 */
-  line-height: 1.6;
+  line-height: 1.2;
 }
 
-.hero-buttons {
+.intro-buttons {
   display: flex;
-  gap: 1rem;
   margin-top: 1.5rem;
 }
 
-.hero-buttons button {
-  padding: 0.5rem 1.5rem;
+.intro-buttons button {
+  padding: 15px 25px;
   border-radius: 200px;
   border: 1px solid black;
   background: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
-  height: 35px;
   margin: 0;
-
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.3);
+  font-size: 17px;
+  font-weight: 550;
 }
 
-.hero-buttons .explore {
+.intro-buttons .explore-btn {
   background: white;
 }
 
-.hero-buttons .explore:hover {
+.intro-buttons .explore-btn:hover {
   background: black;
   color: white;
 }
 
-.hero-buttons .shop {
-  background: #16a34a; /* green-600 */
+.intro-buttons .shop-btn {
+  background: #5CB653; /* green-600 */
   color: white;
   border: none;
 }
 
-.hero-buttons .shop:hover {
+.intro-buttons .shop-btn:hover {
   background: #15803d; /* green-700 */
 }
 
@@ -79,18 +52,20 @@
   padding: 2rem 1rem;
 }
 
-.hero-image img {
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  max-width: 80rem;
-  width: 100%;
-}
 
-.hero-logo {
-  height: 1000px;   /* adjust as needed */
+.home-logo-container{
+  display: flex;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.intro-logo {
+  object-fit: cover;
+  height: 850px;   /* adjust as needed */
   width: auto;    /* keep aspect ratio */
-  margin-bottom: -400px;
-  margin-top: -400px;
+  
 }
 
 .wys-row{
@@ -98,8 +73,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 700px;
-    margin-top: 70px;
+    width: 50%;
 }
 
 .recommend-section {

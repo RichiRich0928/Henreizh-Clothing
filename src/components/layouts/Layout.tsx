@@ -8,11 +8,24 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div>
+    <>
       <AppHeader />
-      <main>{children}</main>
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          paddingLeft: "20px",
+          paddingRight: "20px",
+          alignItems: "center",
+          gap: "20px",
+        }}
+      >
+        {children}
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 
