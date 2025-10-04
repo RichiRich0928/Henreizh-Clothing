@@ -77,7 +77,7 @@ const AppHeader: React.FC = () => {
           </div>
 
           <div className="header-right-buttons">
-            <div className="cart-button">
+            <div className="cart-button" onClick={() => navigate("/cart")}>
               <ShoppingCartOutlined style={{ margin: 0, padding: 0 }} />
             </div>
 
