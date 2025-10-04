@@ -24,9 +24,30 @@
     margin-right: 20px;
 }
 
-.header-left button {
+.header-left button,
+.header-right button {
     height: 100%;
     background-color: transparent;
     border: none;
     padding: 10px 20px;
+    cursor: pointer;
+    font-size: inherit;
+    color: inherit;
+}
+
+.header-left button.active,
+.header-right button.active {
+    color: #12400E !important;
+    text-decoration: underline; 
+    font-weight: bold;
+}
+
+.header-left button:hover,
+.header-right button:hover {
+    background-color: rgba(18, 64, 14, 0.1); 
+}
+
+.header-left button:active,
+.header-right button:active {
+    color: #12400E !important;
 }
