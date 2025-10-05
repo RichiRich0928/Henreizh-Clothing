@@ -85,7 +85,7 @@ const AppHeader: React.FC = () => {
 
             <button
               className="signin-button"
-              onClick={() => navigate("/signup")}
+              onClick={() => navigate("/signin")}
             >
               Sign In
             </button>
