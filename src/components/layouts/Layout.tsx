@@ -16,10 +16,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           display: "flex",
           flexDirection: "column",
           minHeight: "100vh",
-          paddingLeft: "20px",
-          paddingRight: "20px",
+          paddingLeft: "300px",
+          paddingRight: "300px",
           alignItems: "center",
           gap: "20px",
+          background:'#E9ECEE'
         }}
       >
         {children}

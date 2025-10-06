@@ -15,7 +15,7 @@ const Signup: React.FC = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/signup",
+        "http://localhost:5173/api/auth/signup",
         formData
       );
       setMessage("Signup successful! You can now log in.");
