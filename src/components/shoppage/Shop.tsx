@@ -1,6 +1,6 @@
 import { SearchOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
-import { useState } from 'react';
+import { useState, type SetStateAction } from 'react';
 import collection from '../../assets/collection.png';
 import Image1 from '../../assets/image 1.png';
 import Image10 from '../../assets/image 10.png';
@@ -31,12 +31,12 @@ function Shop() {
   const [showMore, setShowMore] = useState(false);
 
   const toggleDiscoverMore = () => setShowDiscoverMore(!showDiscoverMore);
-  const selectCategory = (category) => {
+  const selectCategory = (category: SetStateAction<string>) => {
     setSelectedCategory(category);
     setSelectedSubCategory('');
     setShowMore(false);
   };
-  const selectSubCategory = (subcategory) => {
+  const selectSubCategory = (subcategory: SetStateAction<string>) => {
     setSelectedSubCategory(subcategory);
   };
   const togglePromos = () => setShowPromos(!showPromos);
