@@ -1,6 +1,10 @@
 import { SearchOutlined, DeleteOutlined } from '@ant-design/icons';
 import { Input, Select, Button } from 'antd';
 import Logo from '../../assets/logoimg.png';
+import Cap from '../../assets/cap.png';
+import Denim from '../../assets/denim.png';
+import Polo from '../../assets/polo.png';
+import Pants from '../../assets/pants.png';
 import Layout from "../layouts/Layout";
 import '../styles/Cart.css';
 
@@ -10,7 +14,7 @@ function Cart() {
   return (
     <Layout>
       <div className="cart-container">
-        {/* Header */}
+       
         <header className="cart-header">
           <div className="cart-left">
             <img src={Logo} alt="Henreizh Logo" className="cart-logo" />
@@ -31,18 +35,18 @@ function Cart() {
           </div>
         </header>
 
-        {/* Title + Checkout */}
+       
         <div className="cart-top">
           <h3 className="cart-items-heading">All Items</h3>
           <Button type="primary" className="checkout-btn">Check Out</Button>
         </div>
 
-        {/* Cart Items */}
+       
         <div className="cart-items">
           {[
             {
               id: 1,
-              img: "https://cdn.shopify.com/s/files/1/0757/9955/products/cap_beige.jpg?v=162333",
+              img: Cap,
               name: "Street Cap",
               price: "PHP 267",
               color: "Cream",
@@ -50,7 +54,7 @@ function Cart() {
             },
             {
               id: 2,
-              img: "https://cdn.shopify.com/s/files/1/0574/2794/1653/products/blue_jacket.jpg?v=1625",
+              img: Denim,
               name: "Orange Pocket Denim Jacket",
               price: "PHP 267",
               color: "Blue",
@@ -58,7 +62,7 @@ function Cart() {
             },
             {
               id: 3,
-              img: "https://cdn.shopify.com/s/files/1/0574/2794/1653/products/black_coat.jpg?v=1625",
+              img: Polo,
               name: "Loose Side Button Coat",
               price: "PHP 267",
               color: "Black",
@@ -66,7 +70,7 @@ function Cart() {
             },
             {
               id: 4,
-              img: "https://cdn.shopify.com/s/files/1/0574/2794/1653/products/beige_pants.jpg?v=1625",
+              img: Pants,
               name: "Elegant Cotton Linen Pants Summer Loose",
               price: "PHP 889",
               color: "Cream",
@@ -78,8 +82,9 @@ function Cart() {
               <div className="item-details">
                 <h4>{item.name}</h4>
                 <p>{item.price}</p>
-                <p>Color: {item.color}</p>
-                <p>Size: {item.size}</p>
+                <div className="item-details2"><p>Color: {item.color}</p>
+                <p>Size: {item.size}</p></div>
+                
               </div>
               <div className="item-actions">
                 <DeleteOutlined className="delete-icon" />
