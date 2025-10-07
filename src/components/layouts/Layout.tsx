@@ -1,28 +1,18 @@
 import React from "react";
 import Footer from "./Footer";
 import AppHeader from "./AppHeader";
-
+import "../styles/utilities/Layout.css";
 interface LayoutProps {
   children?: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ children, style }) => {
   return (
     <>
       <AppHeader />
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
-          paddingLeft: "300px",
-          paddingRight: "300px",
-          alignItems: "center",
-          gap: "20px",
-          background:'#E9ECEE'
-        }}
-      >
+      <div className="main-layout" style={style}>
         {children}
       </div>
       <Footer />
