@@ -1,0 +1,11 @@
+.main-layout{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-left: 300px;
+    padding-right: 300px;
+    align-items: center;
+    gap: 20px;
+    background: #E9ECEE;
+    overflow-y: hidden;
+}
