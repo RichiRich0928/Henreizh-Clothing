@@ -6,6 +6,7 @@ import Logo from "../images/henreizh_favicon.png";
 import wholeLogo from "../../assets/logoimg.png";
 // import "antd/dist/reset.css";
 import "../styles/utilities/AppHeader.css";
+import profileImg from "../../assets/pants.png";
 
 const { Header } = Layout;
 const { useBreakpoint } = Grid;
@@ -83,6 +84,45 @@ const AppHeader: React.FC = () => {
               <ShoppingCartOutlined style={{ margin: 0, padding: 0 }} />
             </div>
 
+            
+<div className="profile-section" onClick={() => navigate("/profile")} 
+style={{
+                display: "flex",
+                alignItems: "center",
+                backgroundColor: "#e5e5e5",
+                justifyContent: "space-between",
+                borderRadius: "9999px",
+                minWidth: "150px",
+                padding: "4px 8px 4px 16px",
+                cursor: "pointer",
+              }}>  
+              <span style={{ fontWeight: 500, color: "#000", fontSize:"14", lineHeight:'1' }}>Nathan Aruta</span>
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      width: "34px",
+      height: "34px",
+      borderRadius: "50%",
+      backgroundColor: "#fff",
+      border: "2px solid #fff",
+      overflow: "hidden",
+      marginLeft: "8px",
+    }}
+  >
+    <img
+      src={profileImg}
+      alt="Profile"
+      style={{
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        borderRadius: "50%",
+      }}
+    />
+  </div>
+            </div>
             <button
               className="signin-button"
               onClick={() => navigate("/signin")}
