@@ -28,6 +28,59 @@ import { BiArrowToRight } from "react-icons/bi";
 function Home() {
   const navigate = useNavigate();
 
+  const womensProducts = [
+    {
+      id: 1,
+      name: "Product 1",
+      img: women1,
+      rating: 5,
+      reviews: 1024,
+      buybtn: "#F1C3C3",
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      img: women2,
+      rating: 5,
+      reviews: 1024,
+      buybtn: "#B1D0CE",
+    },
+    {
+      id: 3,
+      name: "Product 3",
+      img: women3,
+      rating: 5,
+      reviews: 1024,
+      buybtn: "#D6BDAF",
+    },
+  ];
+
+  const mensProducts = [
+    {
+      id: 1,
+      name: "Product 1",
+      img: men1,
+      rating: 5,
+      reviews: 1024,
+      buybtn: "#F3C8AF",
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      img: men2,
+      rating: 5,
+      reviews: 1024,
+      buybtn: "#E9FBB6",
+    },
+    {
+      id: 3,
+      name: "Product 3",
+      img: men3,
+      rating: 5,
+      reviews: 1024,
+      buybtn: "#E4CEFF",
+    },
+  ];
   return (
     <Layout
       style={{
@@ -112,69 +165,79 @@ function Home() {
           <div className="clothes-section">
             <label className="clothes-text">Women's Fashion</label>
             <div className="clothes-row">
-              <div className="product-card-home">
-                <img className="clothes-img" src={women1} />
-                <div className="buy-section">
-                  <div className="buy-row">
-                    <label className="product-name">Product 1</label>
-                    <div className="star-container">
-                      <StarFilled className="star-icons" />
-                      <StarFilled className="star-icons" />
-                      <StarFilled className="star-icons" />
-                      <StarFilled className="star-icons" />
-                      <StarFilled className="star-icons" />
+              {womensProducts.map((product) => (
+                <div className="product-card-home" key={product.id}>
+                  <img
+                    className="clothes-img"
+                    src={product.img}
+                    alt={product.name}
+                  />
+
+                  <div className="buy-section">
+                    <div className="buy-row">
+                      <label className="product-name">{product.name}</label>
+
+                      <div className="star-container">
+                        {[...Array(product.rating)].map((_, index) => (
+                          <StarFilled className="star-icons" key={index} />
+                        ))}
+                      </div>
+
+                      <label className="product-number">
+                        ({product.reviews})
+                      </label>
+                      <ShoppingCartOutlined className="cart-icon" />
                     </div>
-                    <label className="product-number">(1024)</label>
-                    <ShoppingCartOutlined className="cart-icon" />
+                  </div>
+
+                  <div
+                    className="buy-btn"
+                    style={{ background: product.buybtn }}
+                  >
+                    Buy Now
                   </div>
                 </div>
-
-                <div className="buy-btn">Buy</div>
-              </div>
-              <div className="product-card-home">
-                <img className="clothes-img" src={women2} />
-                <div className="buy-section">
-                  <div className="buy-row">
-                    <label className="product-name">Product 2</label>
-                    <div className="star-container">
-                      <StarFilled className="star-icons" />
-                      <StarFilled className="star-icons" />
-                      <StarFilled className="star-icons" />
-                      <StarFilled className="star-icons" />
-                      <StarFilled className="star-icons" />
-                    </div>
-                    <label className="product-number">(1024)</label>
-                    <ShoppingCartOutlined className="cart-icon" />
-                  </div>
-                </div>
-
-                <div className="buy-btn">Buy</div>
-              </div>
-              <div className="product-card-home">
-                <img className="clothes-img" src={women3} />
-                <div className="buy-section">
-                  <div className="buy-row">
-                    <label className="product-name">Product 3</label>
-                    <div className="star-container">
-                      <StarFilled className="star-icons" />
-                      <StarFilled className="star-icons" />
-                      <StarFilled className="star-icons" />
-                      <StarFilled className="star-icons" />
-                      <StarFilled className="star-icons" />
-                    </div>
-                    <label className="product-number">(1024)</label>
-                    <ShoppingCartOutlined className="cart-icon" />
-                  </div>
-                </div>
-
-                <div className="buy-btn">Buy</div>
-              </div>
+              ))}
             </div>
           </div>
 
           <div className="clothes-section">
             <label className="clothes-text">Men's Fashion</label>
-            <div className="clothes-row"></div>
+            <div className="clothes-row">
+              {mensProducts.map((product) => (
+                <div className="product-card-home" key={product.id}>
+                  <img
+                    className="clothes-img"
+                    src={product.img}
+                    alt={product.name}
+                  />
+
+                  <div className="buy-section">
+                    <div className="buy-row">
+                      <label className="product-name">{product.name}</label>
+
+                      <div className="star-container">
+                        {[...Array(product.rating)].map((_, index) => (
+                          <StarFilled className="star-icons" key={index} />
+                        ))}
+                      </div>
+
+                      <label className="product-number">
+                        ({product.reviews})
+                      </label>
+                      <ShoppingCartOutlined className="cart-icon" />
+                    </div>
+                  </div>
+
+                  <div
+                    className="buy-btn"
+                    style={{ background: product.buybtn }}
+                  >
+                    Buy Now
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
