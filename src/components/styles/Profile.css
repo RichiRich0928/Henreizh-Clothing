@@ -8,6 +8,9 @@
   gap: 20px;
 }
 
+p{
+font-size: 20px;
+}
 .profile-column{
     flex-direction: column;
     display: flex;
@@ -18,6 +21,12 @@
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #fff;
+}
+
+.lizard-image {
+  width: 1000px;
+  height: 100px;
+
 }
 
 .profile-header-text h2 {
@@ -32,14 +41,16 @@
 }
 
 .edit-profile-btn {
-  background: transparent;
-  border: 1px solid #fff;
-  border-radius: 8px;
-  color: #fff;
-  padding: 4px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #dad7d7;
+  font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
-  font-size: 13px;
-  margin-top: 6px;
+  transition: opacity 0.2s ease;
 }
 
 .edit-profile-btn:hover {
@@ -53,38 +64,43 @@
 
 .orders-section h2 {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 25px;
   margin-bottom: 16px;
+  margin-top: -20px;
+ justify-content: center;
 }
 
 .orders-box {
-  border: 1px dashed #bfbfbf;
+  border: 1px dashed #222222;
   border-radius: 6px;
   padding: 40px;
   text-align: center;
   background-color: #fafafa;
+  height: 200px;
 }
 
 .no-order {
-  color: #777;
-  font-size: 15px;
+  color: #16752e;
+  font-size: 25px;
   margin-bottom: 6px;
+    margin-top: 50px;
 }
 
 .order-desc {
-  color: #777;
-  font-size: 14px;
+  color: #000000;
+  font-size: 20px;
   margin-bottom: 16px;
 }
 
 .show-products-btn {
   border: 1px solid #000;
-  background-color: #fff;
+  background-color: #dbd9d9;
   border-radius: 4px;
-  padding: 6px 14px;
+  padding: 10px 20px;
   font-size: 14px;
   cursor: pointer;
-  font-weight: 500;
+height: 50px;
+color: #16752e;
 }
 
 .show-products-btn:hover {
@@ -121,21 +137,61 @@
 /* ===== INFO CARDS ===== */
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 20px;
   margin-bottom: 30px;
 }
 
 .info-card {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 20px;
-  background-color: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px 24px;
+}
+
+.info-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title-edit{
+display: flex;
+margin-top: 10px;
 }
 
 .info-card h4 {
   font-weight: 700;
-  margin-bottom: 10px;
+  margin: 0;
+}
+
+.icon-left {
+  width: 40px;
+  height: 40px;
+}
+
+.icon-edit {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.icon-edit:hover {
+  opacity: 1;
+}
+
+.icon-drag{
+    height: 50px;
+    margin-top: 50px;
+    margin-left: 450px;
 }
 
 /* ===== NEWSLETTER CARD ===== */
@@ -147,10 +203,20 @@
 
 /* ===== DASHED CARDS ===== */
 .dashed-card {
-  border: 1px dashed #bbb;
+  border: 1px dashed #222222;
   border-radius: 6px;
   padding: 30px;
   text-align: center;
+  width: 480px;
+
+}
+
+.info-grid2 {
+  display: grid;
+  gap: 22px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
 }
 
 .dashed-card h4 {
@@ -159,18 +225,19 @@
 }
 
 .dashed-card p {
-  color: #777;
-  font-size: 14px;
+  color: #000000;
+  font-size: 16px;
 }
 
 .outline-btn {
   border: 1px solid #000;
-  background-color: #fff;
+  background-color: #dbd9d9;
   border-radius: 4px;
-  padding: 6px 12px;
-  font-size: 14px;
+  padding: 10px 20px;
+  font-size: 11px;
   cursor: pointer;
   margin-top: 10px;
+  color: #16752e;
 }
 
 .outline-btn:hover {
@@ -179,10 +246,20 @@
 
 /* ===== GRAY CARDS ===== */
 .gray-card {
-  background-color: #f4f4f4;
+  background-color: #e7e5e5;
   border-radius: 6px;
   padding: 20px;
   text-align: center;
+  box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.25);
+}
+
+.info-grid3 {
+  display: grid;
+gap: 300px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+  margin-left: 250px;
 }
 
 .gray-card h4 {
@@ -190,12 +267,41 @@
   color: #000;
 }
 
-.gray-card p {
-  color: #555;
-  font-size: 14px;
-}
+
 
 .contact-number {
-  font-size: 18px;
-  font-weight: 700;
+  font-weight: 1000;
+  margin-top: -10px;
+    color: #000000;
+  font-size: 30px;
+  width: 400px;
+  height: 5px;
+}
+.FAQ {
+  font-weight: 200;
+  margin-top: -10px;
+    color: #555;
+  font-size: 16px;
+  width: 400px;
+  height: 5px;
+}
+
+.small-icons{
+height: 40px;
+}
+
+.edit-icons{
+height: 2dvh;
+}
+
+.container{
+padding: 50px;
+
+}
+
+.gray-card-title{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
 }
