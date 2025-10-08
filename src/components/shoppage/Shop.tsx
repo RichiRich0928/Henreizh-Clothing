@@ -1,6 +1,7 @@
-import { SearchOutlined } from "@ant-design/icons";
+import { SearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Input } from "antd";
 import { useState, type SetStateAction } from "react";
+import { useNavigate } from "react-router-dom";
 import collection from "../../assets/collection.png";
 import Image1 from "../../assets/image 1.png";
 import Image10 from "../../assets/image 10.png";
@@ -21,6 +22,7 @@ import Layout from "../layouts/Layout";
 import "../styles/Shop.css";
 
 function Shop() {
+  const navigate = useNavigate();
   const [showDiscoverMore, setShowDiscoverMore] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Men");
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
@@ -151,13 +153,8 @@ function Shop() {
               prefix={<SearchOutlined />}
               placeholder="Search for something, e.g. jackets, shorts, baggy pants, collection, etc."
             />
-          </div>
-          <div className="header-actions">
-            <div className="cart">🛒</div>
-            <span className="sale">Sale →</span>
-          </div>
-        </header>
-        <nav className="sub-categories">
+            <div>
+            <nav className="sub-categories">
           <ul>
             <li
               className={
@@ -209,6 +206,15 @@ function Shop() {
             </li>
           </ul>
         </nav>
+        </div>
+             
+          </div>
+          <div className="header-actions">
+            <div className="cart"><ShoppingCartOutlined    /></div>
+            <span className="sale">Sale →</span>
+          </div>
+        </header>
+       
 
         <div className="banner">
           <img
@@ -284,7 +290,12 @@ function Shop() {
                         <p>{product.name}</p>
                         <div className="actions">
                           <span className="favorite">♡</span>
-                          <button className="buy-now">Buy Now</button>
+                          <button 
+                            className="buy-now" 
+                            onClick={() => navigate('/products')}
+                          >
+                            Buy Now
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -306,35 +317,38 @@ function Shop() {
             )}
           </div>
 
-          <button className="promo-button" onClick={toggleCoupons}>
+          <div className="promo-button" onClick={toggleCoupons}>
             Get Coupons Now! {showCoupons ? "▲" : "▼"}
-          </button>
-          {showCoupons && (
+            {showCoupons && (
             <div className="promo-dropdown">
               <p>Coupon details here...</p>
               {/* Add actual coupon content */}
             </div>
           )}
+          </div>
+          
 
-          <button className="promo-button" onClick={toggleEvents}>
+          <div className="promo-button" onClick={toggleEvents}>
             Upcoming Events {showEvents ? "▲" : "▼"}
-          </button>
-          {showEvents && (
+            {showEvents && (
             <div className="promo-dropdown">
               <p>Event details here...</p>
               {/* Add actual event content */}
             </div>
           )}
+          </div>
+          
 
-          <button className="promo-button" onClick={toggleStores}>
+          <div className="promo-button" onClick={toggleStores}>
             Official Stores {showStores ? "▲" : "▼"}
-          </button>
-          {showStores && (
+            {showStores && (
             <div className="promo-dropdown">
               <p>Store details here...</p>
               {/* Add actual store content */}
             </div>
           )}
+          <div/>
+          </div>
         </div>
       </div>
     </Layout>

@@ -1,6 +1,6 @@
 /* ===== HEADER SECTION ===== */
 .profile-header {
-  background-color: #2e5e2a;
+  background-color: #377231;
   color: #fff;
   padding: 40px 60px;
   display: flex;
@@ -251,6 +251,7 @@ margin-top: 10px;
   padding: 20px;
   text-align: center;
   box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.25);
+  width: 500px;
 }
 
 .info-grid3 {
@@ -259,7 +260,7 @@ gap: 300px;
   display: flex;
   flex-direction: row;
   margin-bottom: 30px;
-  margin-left: 250px;
+  margin-left: 150px;
 }
 
 .gray-card h4 {

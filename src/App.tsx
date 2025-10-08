@@ -1,14 +1,15 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Home from "./components/homepage/Home";
 import About from "./components/aboutus/AboutUs";
 import Cart from "./components/cartpage/Cart";
 import Collections from "./components/collections/Collections";
 import Contact from "./components/contact/Contact";
-import Shop from "./components/shoppage/Shop";
-import Signup from "./components/signup/Signup";
+import Home from "./components/homepage/Home";
+import { Products } from "./components/productspage/Products";
 import Profile from "./components/profilepage/Profile";
+import Shop from "./components/shoppage/Shop";
 import Signin from "./components/signup/Signin";
+import Signup from "./components/signup/Signup";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/products" element={<Products />} />
     </Routes>
   );
 }
