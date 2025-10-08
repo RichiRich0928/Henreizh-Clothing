@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .tagline {
@@ -155,6 +154,7 @@
   object-fit: cover;
   height: 600px;   /* adjust as needed */
   width: auto;    /* keep aspect ratio */
+  overflow-y: hidden;
 }
 .collection-text-container{
   display: flex;
@@ -220,7 +220,6 @@
   margin-top: 50px;
   align-self: center;
   padding-bottom: 20px;
-
 }
 
 .clothes-row{
@@ -314,6 +313,79 @@
     color: #1f2937; /* gray-800 */
   }
 
+  .suggestion-container{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    gap: 100px;
+    padding-top: 50px;
+}
+
+.five-suggestion{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.suggestion-row{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    width: auto;
+    gap: 20px;
+}
+
+.suggestion-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 400px;
+}
+.suggestion-icon{
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #53991a;
+    margin-bottom: 15px;
+
+}
+
+.suggestion-title{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+.suggestion-subtitle{
+    font-size: 20px;
+    text-align: center;
+}
+.faq-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  gap: 70px;
+  margin-top: 200px;
+}
+.dropdown-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+.faq-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  width: 100%;
+}
 
 
 

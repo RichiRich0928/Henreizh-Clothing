@@ -5,10 +5,14 @@ import Layout from "../layouts/Layout";
 import homepic from "../images/homepic.png";
 import collectionImg from "../../assets/HomeImages/Collection_Image.png";
 import {
+  ArrowDownOutlined,
   CarryOutOutlined,
   ShoppingCartOutlined,
   StarFilled,
   StarOutlined,
+  TagFilled,
+  ThunderboltFilled,
+  ThunderboltOutlined,
 } from "@ant-design/icons";
 import men1 from "../../assets/HomeImages/men1.png";
 import men2 from "../../assets/HomeImages/men2.png";
@@ -23,11 +27,17 @@ import {
   FaPinterest,
   FaTwitter,
 } from "react-icons/fa";
-import { BiArrowToRight } from "react-icons/bi";
+import { BiArrowToRight, BiHeadphone } from "react-icons/bi";
+import { useState } from "react";
 
 function Home() {
   const navigate = useNavigate();
 
+  const [selectedIndex, setSelectedIndex] = useState(null);
+
+  const faqOnClick = (index) => {
+    setSelectedIndex(index === selectedIndex ? null : index); // toggle
+  };
   const womensProducts = [
     {
       id: 1,
@@ -81,6 +91,65 @@ function Home() {
       buybtn: "#E4CEFF",
     },
   ];
+
+  const suggestions = [
+    {
+      Icon: <ThunderboltFilled />,
+      title: "Quality Fabrics",
+      subtitle:
+        "Experience the luxury of high-quality fabrics that feel as good as they look.",
+    },
+    {
+      Icon: <StarFilled />,
+      title: "Sustainable Fashion",
+      subtitle:
+        "Embrace style with a conscience through our eco-friendly clothing line.",
+    },
+    {
+      Icon: <TagFilled />,
+      title: "Affordable",
+      subtitle:
+        "Shop stylish clothing without breaking the bank with Henreizh!",
+    },
+    {
+      Icon: <BiHeadphone />,
+      title: "Customer Service",
+      subtitle:
+        "Experience the luxury of high-quality fabrics that feel as good as they look.",
+    },
+    {
+      Icon: <ShoppingCartOutlined />,
+      title: "Perfect Fit",
+      subtitle:
+        "Find your perfect fit with our diverse range of sizes and styles.",
+    },
+  ];
+
+  const faqs = [
+    {
+      question: "What is Henreizh’s return policy?",
+      answer:
+        "Henreizh allows returns within 14 days of delivery for unused items in original packaging.",
+    },
+    {
+      question: "How can I track my order?",
+      answer:
+        "You can track your order using the tracking number sent via email after your purchase.",
+    },
+
+    {
+      question: "Can I change my order after placing it?",
+      answer:
+        "Orders can only be changed before they are processed or shipped.",
+    },
+
+    {
+      question: "What payment methods do you accept?",
+      answer:
+        "Henreizh accepts credit/debit cards, e-wallets like GCash and PayMaya, and cash on delivery.",
+    },
+  ];
+
   return (
     <Layout
       style={{
@@ -115,13 +184,16 @@ function Home() {
             </button>
           </div>
         </div>
-
         <img
-          style={{ objectFit: "cover", height: "950px", width: "100%" }}
+          style={{
+            objectFit: "cover",
+            height: "950px",
+            width: "100%",
+            overflowY: "hidden",
+          }}
           src={homepic}
           alt="Fashion clothing store display"
         />
-
         <div className="home-search-container">
           <label style={{ marginLeft: 100, fontSize: 25 }}>Search</label>
           <input
@@ -142,7 +214,6 @@ function Home() {
             <FaPinterest className="socmed-icons" />
           </div>
         </div>
-
         <div className="collection-container">
           <img className="collection-img" src={collectionImg} />
 
@@ -158,7 +229,6 @@ function Home() {
             </label>
           </div>
         </div>
-
         <div className="seasonal-sale-container">
           <h1 className="seasonal-title">You might like...</h1>
 
@@ -240,7 +310,78 @@ function Home() {
             </div>
           </div>
         </div>
+        '
+        <div className="suggestion-container">
+          <h1 style={{ fontSize: 60 }}>Tell us your style!</h1>
+          <div className="five-suggestion">
+            <div className="suggestion-row">
+              {suggestions.slice(0, 3).map((item, index) => (
+                <div className="suggestion-item" key={index}>
+                  <div className="suggestion-icon">
+                    <p
+                      style={{
+                        margin: 0,
+                        fontSize: 30,
+                        color: "#53991a",
+                        padding: 0,
+                      }}
+                    >
+                      {item.Icon}
+                    </p>
+                  </div>
+                  <p className="suggestion-title">{item.title}</p>
+                  <p className="suggestion-subtitle">{item.subtitle}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="suggestion-row">
+              {suggestions.slice(3, 5).map((item, index) => (
+                <div className="suggestion-item" key={index}>
+                  <div className="suggestion-icon">
+                    <p
+                      style={{
+                        margin: 0,
+                        fontSize: 30,
+                        color: "#53991a",
+                        padding: 0,
+                      }}
+                    >
+                      {item.Icon}
+                    </p>
+                  </div>
+                  <p className="suggestion-title">{item.title}</p>
+                  <p className="suggestion-subtitle">{item.subtitle}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="faq-container">
+          <h1 style={{ fontSize: 45 }}>Frequently Asked Questions</h1>
+          <div className="dropdown-container">
+            {faqs.map((item, index) => (
+              <div
+                className="faq-item"
+                key={index}
+                onClick={() => faqOnClick(index)}
+              >
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <p style={{ fontSize: 20 }}>{item.question}</p>
+                  <ArrowDownOutlined />
+                </div>
+
+                {selectedIndex === index && (
+                  <p className="faq-answer">{item.answer}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+      x
     </Layout>
   );
 }
