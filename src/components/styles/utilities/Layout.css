@@ -7,5 +7,6 @@
     align-items: center;
     gap: 20px;
     background: #E9ECEE;
-    overflow-y: hidden;
+    overflow: hidden;
 }
+
