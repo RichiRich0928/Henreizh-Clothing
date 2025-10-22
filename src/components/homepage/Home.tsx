@@ -6,13 +6,10 @@ import homepic from "../images/homepic.png";
 import collectionImg from "../../assets/HomeImages/Collection_Image.png";
 import {
   ArrowDownOutlined,
-  CarryOutOutlined,
   ShoppingCartOutlined,
   StarFilled,
-  StarOutlined,
   TagFilled,
   ThunderboltFilled,
-  ThunderboltOutlined,
 } from "@ant-design/icons";
 import men1 from "../../assets/HomeImages/men1.png";
 import men2 from "../../assets/HomeImages/men2.png";
@@ -33,9 +30,9 @@ import { useState } from "react";
 function Home() {
   const navigate = useNavigate();
 
-  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
-  const faqOnClick = (index) => {
+  const faqOnClick = (index: number) => {
     setSelectedIndex(index === selectedIndex ? null : index); // toggle
   };
   const womensProducts = [

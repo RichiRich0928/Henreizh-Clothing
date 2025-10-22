@@ -134,14 +134,14 @@ const AppHeader: React.FC = () => {
             </div>
             <button
               className="signin-button"
-              onClick={() => navigate("/signin")}
+              // onClick={() => navigate("/signin")}
             >
               Sign In
             </button>
 
             <button
               className="signup-button"
-              onClick={() => navigate("/signup")}
+              // onClick={() => navigate("/signup")}
             >
               Create an Account
             </button>
