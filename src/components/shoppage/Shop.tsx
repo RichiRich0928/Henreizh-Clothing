@@ -23,7 +23,7 @@ import "../styles/Shop.css";
 
 function Shop() {
   const navigate = useNavigate();
-  const [showDiscoverMore, setShowDiscoverMore] = useState(false);
+  const [showDiscoverMore, setShowDiscoverMore] = useState(true); // Auto-expanded
   const [selectedCategory, setSelectedCategory] = useState("Men");
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
   const [showPromos, setShowPromos] = useState(false);
@@ -31,21 +31,25 @@ function Shop() {
   const [showEvents, setShowEvents] = useState(false);
   const [showStores, setShowStores] = useState(false);
   const [showMore, setShowMore] = useState(false);
+  const [showAllProducts, setShowAllProducts] = useState(false); // For Show More button
 
   const toggleDiscoverMore = () => setShowDiscoverMore(!showDiscoverMore);
   const selectCategory = (category: SetStateAction<string>) => {
     setSelectedCategory(category);
     setSelectedSubCategory("");
     setShowMore(false);
+    setShowAllProducts(false); // Reset show all when changing category
   };
   const selectSubCategory = (subcategory: SetStateAction<string>) => {
     setSelectedSubCategory(subcategory);
+    setShowAllProducts(false); // Reset show all when changing subcategory
   };
   const togglePromos = () => setShowPromos(!showPromos);
   const toggleCoupons = () => setShowCoupons(!showCoupons);
   const toggleEvents = () => setShowEvents(!showEvents);
   const toggleStores = () => setShowStores(!showStores);
   const toggleMore = () => setShowMore(!showMore);
+  const toggleShowAllProducts = () => setShowAllProducts(!showAllProducts);
 
   const products = [
     {
@@ -143,6 +147,11 @@ function Shop() {
     return true;
   });
 
+  // Show only 4 products initially, or all if showAllProducts is true
+  const displayedProducts = showAllProducts 
+    ? filteredProducts 
+    : filteredProducts.slice(0, 4);
+
   return (
     <Layout>
       <div className="shop-container">
@@ -154,67 +163,67 @@ function Shop() {
               placeholder="Search for something, e.g. jackets, shorts, baggy pants, collection, etc."
             />
             <div>
-            <nav className="sub-categories">
-          <ul>
-            <li
-              className={
-                selectedSubCategory === "Men's Jackets" ? "active" : ""
-              }
-              onClick={() => selectSubCategory("Men's Jackets")}
-            >
-              Men's Jackets
-            </li>
-            <li
-              className={
-                selectedSubCategory === "Half Zip Sweatshirts" ? "active" : ""
-              }
-              onClick={() => selectSubCategory("Half Zip Sweatshirts")}
-            >
-              Half Zip Sweatshirts
-            </li>
-            <li
-              className={selectedSubCategory === "Baggy Pants" ? "active" : ""}
-              onClick={() => selectSubCategory("Baggy Pants")}
-            >
-              Baggy Pants
-            </li>
-            <li
-              className={selectedSubCategory === "Kids Apparel" ? "active" : ""}
-              onClick={() => selectSubCategory("Kids Apparel")}
-            >
-              Kids Apparel
-            </li>
-            <li
-              className={selectedSubCategory === "Trendy Caps" ? "active" : ""}
-              onClick={() => selectSubCategory("Trendy Caps")}
-            >
-              Trendy Caps
-            </li>
-            <li
-              className={selectedSubCategory === "Sundress" ? "active" : ""}
-              onClick={() => selectSubCategory("Sundress")}
-            >
-              Sundress
-            </li>
-            <li
-              className={
-                selectedSubCategory === "Aesthetic Sunglasses" ? "active" : ""
-              }
-              onClick={() => selectSubCategory("Aesthetic Sunglasses")}
-            >
-              Aesthetic Sunglasses
-            </li>
-          </ul>
-        </nav>
-        </div>
-             
+              <nav className="sub-categories">
+                <ul>
+                  <li
+                    className={
+                      selectedSubCategory === "Men's Jackets" ? "active" : ""
+                    }
+                    onClick={() => selectSubCategory("Men's Jackets")}
+                  >
+                    Men's Jackets
+                  </li>
+                  <li
+                    className={
+                      selectedSubCategory === "Half Zip Sweatshirts" ? "active" : ""
+                    }
+                    onClick={() => selectSubCategory("Half Zip Sweatshirts")}
+                  >
+                    Half Zip Sweatshirts
+                  </li>
+                  <li
+                    className={selectedSubCategory === "Baggy Pants" ? "active" : ""}
+                    onClick={() => selectSubCategory("Baggy Pants")}
+                  >
+                    Baggy Pants
+                  </li>
+                  <li
+                    className={selectedSubCategory === "Kids Apparel" ? "active" : ""}
+                    onClick={() => selectSubCategory("Kids Apparel")}
+                  >
+                    Kids Apparel
+                  </li>
+                  <li
+                    className={selectedSubCategory === "Trendy Caps" ? "active" : ""}
+                    onClick={() => selectSubCategory("Trendy Caps")}
+                  >
+                    Trendy Caps
+                  </li>
+                  <li
+                    className={selectedSubCategory === "Sundress" ? "active" : ""}
+                    onClick={() => selectSubCategory("Sundress")}
+                  >
+                    Sundress
+                  </li>
+                  <li
+                    className={
+                      selectedSubCategory === "Aesthetic Sunglasses" ? "active" : ""
+                    }
+                    onClick={() => selectSubCategory("Aesthetic Sunglasses")}
+                  >
+                    Aesthetic Sunglasses
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
           <div className="header-actions">
-            <div className="cart"><ShoppingCartOutlined    /></div>
+            <div className="cart">
+              <ShoppingCartOutlined />
+            </div>
             <span className="sale">Sale →</span>
           </div>
         </header>
-       
 
         <div className="banner">
           <img
@@ -235,7 +244,7 @@ function Shop() {
         </button>
 
         {showDiscoverMore && (
-          <>
+          <div className="discover-more-content">
             <nav className="main-categories">
               <ul>
                 <li
@@ -283,16 +292,16 @@ function Shop() {
               </div>
               <div className="product-wrapper">
                 <div className="product-grid">
-                  {filteredProducts.map((product) => (
+                  {displayedProducts.map((product) => (
                     <div key={product.id} className="product-card">
                       <img src={product.image} alt={product.name} />
                       <div className="product-info">
                         <p>{product.name}</p>
                         <div className="actions">
                           <span className="favorite">♡</span>
-                          <button 
-                            className="buy-now" 
-                            onClick={() => navigate('/products')}
+                          <button
+                            className="buy-now"
+                            onClick={() => navigate("/products")}
                           >
                             Buy Now
                           </button>
@@ -301,54 +310,139 @@ function Shop() {
                     </div>
                   ))}
                 </div>
+
+                {/* Show More Button - Only show if there are more than 4 products */}
+                {filteredProducts.length > 4 && (
+                  <button 
+                    className="show-more-products" 
+                    onClick={toggleShowAllProducts}
+                  >
+                    {showAllProducts ? "Show Less ▲" : "Show more ▼"}
+                  </button>
+                )}
               </div>
             </div>
-          </>
+          </div>
         )}
 
+        {/* Promo Section - OUTSIDE Discover More */}
         <div className="promo-section">
           <div className="promo-button" onClick={togglePromos}>
             Show Promos {showPromos ? "▲" : "▼"}
-            {showPromos && (
-              <div className="promo-dropdown">
-                <p>Promo details here...</p>
-                {/* Add actual promo content */}
-              </div>
-            )}
           </div>
+          {showPromos && (
+            <div className="promo-dropdown">
+              <h3>🎉 Active Promotions</h3>
+              <div className="promo-item">
+                <h4>Summer Sale - Up to 50% OFF</h4>
+                <p>Get amazing discounts on all summer collections. Valid until October 31, 2025.</p>
+                <span className="promo-code">Code: SUMMER50</span>
+              </div>
+              <div className="promo-item">
+                <h4>Buy 1 Get 1 Free on Selected Items</h4>
+                <p>Purchase any item from our accessories collection and get another one free!</p>
+                <span className="promo-code">Code: BOGO2025</span>
+              </div>
+              <div className="promo-item">
+                <h4>Free Shipping Over ₱2,000</h4>
+                <p>Enjoy free nationwide shipping on orders over ₱2,000.</p>
+                <span className="promo-code">Auto-applied</span>
+              </div>
+            </div>
+          )}
 
           <div className="promo-button" onClick={toggleCoupons}>
             Get Coupons Now! {showCoupons ? "▲" : "▼"}
-            {showCoupons && (
+          </div>
+          {showCoupons && (
             <div className="promo-dropdown">
-              <p>Coupon details here...</p>
-              {/* Add actual coupon content */}
+              <h3>🎫 Available Coupons</h3>
+              <div className="coupon-item">
+                <div className="coupon-header">
+                  <span className="coupon-discount">₱500 OFF</span>
+                  <span className="coupon-validity">Valid until Nov 15</span>
+                </div>
+                <p>Minimum purchase of ₱3,000</p>
+                <button className="claim-coupon">Claim Coupon</button>
+              </div>
+              <div className="coupon-item">
+                <div className="coupon-header">
+                  <span className="coupon-discount">30% OFF</span>
+                  <span className="coupon-validity">Valid until Oct 31</span>
+                </div>
+                <p>For new customers only</p>
+                <button className="claim-coupon">Claim Coupon</button>
+              </div>
+              <div className="coupon-item">
+                <div className="coupon-header">
+                  <span className="coupon-discount">₱200 OFF</span>
+                  <span className="coupon-validity">Valid until Dec 1</span>
+                </div>
+                <p>On your first purchase</p>
+                <button className="claim-coupon">Claim Coupon</button>
+              </div>
             </div>
           )}
-          </div>
-          
 
           <div className="promo-button" onClick={toggleEvents}>
             Upcoming Events {showEvents ? "▲" : "▼"}
-            {showEvents && (
+          </div>
+          {showEvents && (
             <div className="promo-dropdown">
-              <p>Event details here...</p>
-              {/* Add actual event content */}
+              <h3>📅 Upcoming Events</h3>
+              <div className="event-item">
+                <div className="event-date">October 25, 2025</div>
+                <h4>Fall Fashion Show</h4>
+                <p>Join us for an exclusive showcase of our Fall/Winter 2025 collection. Limited seats available!</p>
+                <button className="event-register">Register Now</button>
+              </div>
+              <div className="event-item">
+                <div className="event-date">November 11, 2025</div>
+                <h4>11.11 Mega Sale</h4>
+                <p>The biggest sale of the year! Up to 70% off on selected items. Mark your calendars!</p>
+                <button className="event-register">Set Reminder</button>
+              </div>
+              <div className="event-item">
+                <div className="event-date">December 1-24, 2025</div>
+                <h4>Christmas Countdown Sale</h4>
+                <p>Daily deals and surprises throughout December. New offers every day!</p>
+                <button className="event-register">Learn More</button>
+              </div>
             </div>
           )}
-          </div>
-          
 
           <div className="promo-button" onClick={toggleStores}>
             Official Stores {showStores ? "▲" : "▼"}
-            {showStores && (
+          </div>
+          {showStores && (
             <div className="promo-dropdown">
-              <p>Store details here...</p>
-              {/* Add actual store content */}
+              <h3>🏪 Official Store Locations</h3>
+              <div className="store-item">
+                <h4>Henreizh Manila - SM Megamall</h4>
+                <p>📍 3rd Floor, Building A, SM Megamall, Mandaluyong City</p>
+                <p>📞 (02) 8123-4567</p>
+                <p>🕐 10:00 AM - 9:00 PM (Daily)</p>
+              </div>
+              <div className="store-item">
+                <h4>Henreizh BGC - High Street</h4>
+                <p>📍 2nd Floor, Bonifacio High Street, Taguig City</p>
+                <p>📞 (02) 8765-4321</p>
+                <p>🕐 11:00 AM - 10:00 PM (Daily)</p>
+              </div>
+              <div className="store-item">
+                <h4>Henreizh Cebu - Ayala Center</h4>
+                <p>📍 Ground Floor, Ayala Center Cebu, Cebu City</p>
+                <p>📞 (032) 234-5678</p>
+                <p>🕐 10:00 AM - 9:00 PM (Daily)</p>
+              </div>
+              <div className="store-item">
+                <h4>Henreizh Online Store</h4>
+                <p>📍 Shop from anywhere in the Philippines</p>
+                <p>📞 Customer Service: 1-800-HENREIZH</p>
+                <p>🕐 24/7 Available</p>
+              </div>
             </div>
           )}
-          <div/>
-          </div>
         </div>
       </div>
     </Layout>
