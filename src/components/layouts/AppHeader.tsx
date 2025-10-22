@@ -24,11 +24,9 @@ const AppHeader: React.FC = () => {
   const MenuItems = [
     { key: "/home", label: "Home" },
     { key: "/shop", label: "Shop" },
-    { key: "/collections", label: "Collections" },
-    { key: "/about", label: "About Us" },
-    { key: "/contact", label: "Contact" },
-    { key: "/cart", label: "Cart" },
-    { key: "/signup", label: "Create an Account" },
+    // { key: "/collections", label: "Collections" },
+    // { key: "/cart", label: "Cart" },
+    // { key: "/signup", label: "Create an Account" },
   ];
 
   return (
@@ -84,9 +82,10 @@ const AppHeader: React.FC = () => {
               <ShoppingCartOutlined style={{ margin: 0, padding: 0 }} />
             </div>
 
-            
-<div className="profile-section" onClick={() => navigate("/profile")} 
-style={{
+            <div
+              className="profile-section"
+              onClick={() => navigate("/profile")}
+              style={{
                 display: "flex",
                 alignItems: "center",
                 backgroundColor: "#e5e5e5",
@@ -95,33 +94,43 @@ style={{
                 minWidth: "150px",
                 padding: "4px 8px 4px 16px",
                 cursor: "pointer",
-              }}>  
-              <span style={{ fontWeight: 500, color: "#000", fontSize:"14", lineHeight:'1' }}>Nathan Aruta</span>
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      width: "34px",
-      height: "34px",
-      borderRadius: "50%",
-      backgroundColor: "#fff",
-      border: "2px solid #fff",
-      overflow: "hidden",
-      marginLeft: "8px",
-    }}
-  >
-    <img
-      src={profileImg}
-      alt="Profile"
-      style={{
-        width: "100%",
-        height: "100%",
-        objectFit: "cover",
-        borderRadius: "50%",
-      }}
-    />
-  </div>
+              }}
+            >
+              <span
+                style={{
+                  fontWeight: 500,
+                  color: "#000",
+                  fontSize: "14",
+                  lineHeight: "1",
+                }}
+              >
+                Nathan Aruta
+              </span>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "34px",
+                  height: "34px",
+                  borderRadius: "50%",
+                  backgroundColor: "#fff",
+                  border: "2px solid #fff",
+                  overflow: "hidden",
+                  marginLeft: "8px",
+                }}
+              >
+                <img
+                  src={profileImg}
+                  alt="Profile"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: "50%",
+                  }}
+                />
+              </div>
             </div>
             <button
               className="signin-button"
