@@ -24,7 +24,7 @@ import "../styles/Shop.css";
 function Shop() {
   const navigate = useNavigate();
   const [showDiscoverMore, setShowDiscoverMore] = useState(true); // Auto-expanded
-  const [selectedCategory, setSelectedCategory] = useState("Men");
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedSubCategory, setSelectedSubCategory] = useState("");
   const [showPromos, setShowPromos] = useState(false);
   const [showCoupons, setShowCoupons] = useState(false);
@@ -58,6 +58,10 @@ function Shop() {
       image: Image1,
       category: "Men",
       subcategory: "Men's Jackets",
+      price: 49.99,
+      isSale: true,
+      isNew: false,
+      isBest: true,
     },
     {
       id: 2,
@@ -65,6 +69,10 @@ function Shop() {
       image: Image2,
       category: "Men",
       subcategory: "Half Zip Sweatshirts",
+      price: 29.99,
+      isSale: true,
+      isNew: false,
+      isBest: false,
     },
     {
       id: 3,
@@ -72,6 +80,10 @@ function Shop() {
       image: Image3,
       category: "Men",
       subcategory: "Half Zip Sweatshirts",
+      price: 59.99,
+      isSale: true,
+      isNew: false,
+      isBest: true,
     },
     {
       id: 4,
@@ -79,6 +91,10 @@ function Shop() {
       image: Image4,
       category: "Women",
       subcategory: "Half Zip Sweatshirts",
+      price: 69.99,
+      isSale: true,
+      isNew: false,
+      isBest: false,
     },
     {
       id: 5,
@@ -86,6 +102,10 @@ function Shop() {
       image: Image5,
       category: "Men",
       subcategory: "Half Zip Sweatshirts",
+      price: 39.99,
+      isSale: true,
+      isNew: false,
+      isBest: true,
     },
     {
       id: 6,
@@ -93,6 +113,10 @@ function Shop() {
       image: Image6,
       category: "Men",
       subcategory: "Baggy Pants",
+      price: 44.99,
+      isSale: true,
+      isNew: false,
+      isBest: false,
     },
     {
       id: 7,
@@ -100,28 +124,53 @@ function Shop() {
       image: Image7,
       category: "Men",
       subcategory: "Baggy Pants",
+      price: 34.99,
+      isSale: true,
+      isNew: false,
+      isBest: true,
     },
-    { id: 8, name: "Metal Pendant", image: Image8, category: "Accessories" },
+    {
+      id: 8,
+      name: "Baggy Pants",
+      image: Image8,
+      category: "Women",
+      price: 49.99,
+      isSale: false,
+      isNew: true,
+      isBest: false,
+    },
     {
       id: 9,
-      name: "Aesthetic Sunglasses",
+      name: "Shorts",
       image: Image9,
-      category: "Accessories",
-      subcategory: "Aesthetic Sunglasses",
+      category: "Men",
+      subcategory: "Shorts",
+      price: 24.99,
+      isSale: false,
+      isNew: true,
+      isBest: true,
     },
     {
       id: 10,
-      name: "Baseball Cap",
+      name: "Aesthetic Sunglasses",
       image: Image10,
       category: "Accessories",
       subcategory: "Trendy Caps",
+      price: 19.99,
+      isSale: false,
+      isNew: true,
+      isBest: false,
     },
     {
       id: 11,
-      name: "Oversized Hoodie",
+      name: "Necklace",
       image: Image11,
-      category: "Women",
+      category: "Accessories",
       subcategory: "Kids Apparel",
+      price: 14.99,
+      isSale: false,
+      isNew: true,
+      isBest: true,
     },
     {
       id: 12,
@@ -129,6 +178,10 @@ function Shop() {
       image: Image12,
       category: "Women",
       subcategory: "Sundress",
+      price: 54.99,
+      isSale: false,
+      isNew: true,
+      isBest: false,
     },
     {
       id: 13,
@@ -136,20 +189,45 @@ function Shop() {
       image: Image13,
       category: "Kids",
       subcategory: "Kids Apparel",
+      price: 39.99,
+      isSale: false,
+      isNew: true,
+      isBest: true,
     },
-    { id: 14, name: "Leather Belt", image: Image14, category: "Accessories" },
+    {
+      id: 14,
+      name: "Metal Ring Necklace",
+      image: Image14,
+      category: "Accessories",
+      price: 29.99,
+      isSale: false,
+      isNew: true,
+      isBest: false,
+    },
   ];
 
   const filteredProducts = products.filter((product) => {
-    if (product.category !== selectedCategory) return false;
+    let categoryMatch = true;
+    if (selectedCategory === "All") {
+      // Show all products
+    } else if (selectedCategory === "Sale") {
+      categoryMatch = product.isSale;
+    } else if (selectedCategory === "New Arrivals") {
+      categoryMatch = product.isNew;
+    } else if (selectedCategory === "Best Sellers") {
+      categoryMatch = product.isBest;
+    } else {
+      categoryMatch = product.category === selectedCategory;
+    }
+    if (!categoryMatch) return false;
     if (selectedSubCategory && product.subcategory !== selectedSubCategory)
       return false;
     return true;
   });
 
   // Show only 4 products initially, or all if showAllProducts is true
-  const displayedProducts = showAllProducts 
-    ? filteredProducts 
+  const displayedProducts = showAllProducts
+    ? filteredProducts
     : filteredProducts.slice(0, 4);
 
   return (
@@ -248,6 +326,12 @@ function Shop() {
             <nav className="main-categories">
               <ul>
                 <li
+                  className={selectedCategory === "All" ? "active" : ""}
+                  onClick={() => selectCategory("All")}
+                >
+                  All
+                </li>
+                <li
                   className={selectedCategory === "Men" ? "active" : ""}
                   onClick={() => selectCategory("Men")}
                 >
@@ -275,9 +359,36 @@ function Shop() {
                   More {showMore ? "▲" : "▼"}
                   {showMore && (
                     <ul className="more-dropdown-menu">
-                      <li className="more-option">Option 1</li>
-                      <li className="more-option">Option 2</li>
-                      <li className="more-option">Option 3</li>
+                      <li
+                        className="more-option"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          selectCategory("Sale");
+                          setShowMore(false);
+                        }}
+                      >
+                        Sale
+                      </li>
+                      <li
+                        className="more-option"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          selectCategory("New Arrivals");
+                          setShowMore(false);
+                        }}
+                      >
+                        New Arrivals
+                      </li>
+                      <li
+                        className="more-option"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          selectCategory("Best Sellers");
+                          setShowMore(false);
+                        }}
+                      >
+                        Best Sellers
+                      </li>
                     </ul>
                   )}
                 </li>
@@ -296,7 +407,10 @@ function Shop() {
                     <div key={product.id} className="product-card">
                       <img src={product.image} alt={product.name} />
                       <div className="product-info">
-                        <p>{product.name}</p>
+                        <div className="product-details">
+                          <p className="product-name">{product.name}</p>
+                          <p className="product-price">${product.price.toFixed(2)}</p>
+                        </div>
                         <div className="actions">
                           <span className="favorite">♡</span>
                           <button
@@ -313,11 +427,11 @@ function Shop() {
 
                 {/* Show More Button - Only show if there are more than 4 products */}
                 {filteredProducts.length > 4 && (
-                  <button 
-                    className="show-more-products" 
+                  <button
+                    className="show-more-products"
                     onClick={toggleShowAllProducts}
                   >
-                    {showAllProducts ? "Show Less ▲" : "Show more ▼"}
+                    {showAllProducts ? "Show Less ▲" : "Show More ▼"}
                   </button>
                 )}
               </div>
